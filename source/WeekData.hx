@@ -77,7 +77,7 @@ class WeekData {
 	{
 		weeksList = [];
 		weeksLoaded.clear();
-		#if MODS_ALLOWED
+		#if desktop 
 		var directories:Array<String> = [Paths.mods(), Paths.getPreloadPath()];
 		var originalLength:Int = directories.length;
 		if(FileSystem.exists(Paths.mods())) {
@@ -104,7 +104,7 @@ class WeekData {
 					if(week != null) {
 						var weekFile:WeekData = new WeekData(week);
 
-						#if MODS_ALLOWED
+						#if desktop 
 						if(j >= originalLength) {
 							weekFile.folder = directories[j].substring(Paths.mods().length, directories[j].length-1);
 						}
@@ -119,7 +119,7 @@ class WeekData {
 			}
 		}
 
-		#if MODS_ALLOWED
+		#if desktop 
 		for (i in 0...directories.length) {
 			var directory:String = directories[i] + 'weeks/';
 			if(FileSystem.exists(directory)) {
@@ -150,7 +150,7 @@ class WeekData {
 
 	private static function getWeekFile(path:String):WeekFile {
 		var rawJson:String = null;
-		#if MODS_ALLOWED
+		#if desktop 
 		if(FileSystem.exists(path)) {
 			rawJson = File.getContent(path);
 		}
