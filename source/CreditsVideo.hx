@@ -1,5 +1,5 @@
 package;
-
+#if desktop 
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.util.FlxColor;
@@ -47,3 +47,4 @@ class CreditsVideo extends FlxState
 	}
 	
 }
+#end
