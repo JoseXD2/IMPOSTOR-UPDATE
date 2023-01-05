@@ -1,3 +1,4 @@
+#if desktop 
 package;
 
 import openfl.media.SoundTransform;
@@ -435,3 +436,4 @@ class VideoHandler extends FlxSprite
 	}
 	
 }
+#end 
