@@ -147,7 +147,7 @@ class Paths
 			return levelPath;
 
 		levelPath = getLibraryPathForce(file, "shared");
-		if (FileSystem.exists(levelPath))
+		if (OpenFlAssets.exists(levelPath))
 			return levelPath;
 
 		return getPreloadPath(file);
@@ -360,7 +360,7 @@ class Paths
 		#end
 
 		var path = getPath('images/$key.png', IMAGE, library);
-		if (FileSystem.exists(path)) {
+		if (OpenFlAssets.exists(path)) {
 			if(!currentTrackedAssets.exists(path)) {
 				// path = path.substring(path.indexOf(':') + 1, path.length);
 				var bitmap = BitmapData.fromFile(path);
@@ -409,7 +409,7 @@ class Paths
 		// trace(gottenPath);
 		if(!currentTrackedSounds.exists(gottenPath)) 
 		#if MODS_ALLOWED
-			currentTrackedSounds.set(gottenPath, Sound.fromFile('./' + gottenPath));
+			currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
 		#else
 			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(getPath('$path/$key.$SOUND_EXT', SOUND, library)));
 		#end
