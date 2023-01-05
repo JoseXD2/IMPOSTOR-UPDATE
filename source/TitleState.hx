@@ -65,19 +65,7 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		#if (polymod && !html5)
-		if (sys.FileSystem.exists('mods/')) {
-			var folders:Array<String> = [];
-			for (file in sys.FileSystem.readDirectory('mods/')) {
-				var path = haxe.io.Path.join(['mods/', file]);
-				if (sys.FileSystem.isDirectory(path)) {
-					folders.push(file);
-				}
-			}
-			if(folders.length > 0) {
-				polymod.Polymod.init({modRoot: "mods", dirs: folders});
-			}
-		}
+		
 
 		//Gonna finish this later, probably
 		#end
@@ -130,7 +118,7 @@ class TitleState extends MusicBeatState
 				}
 				else
 				{
-					startVideo('v4_startup');
+					
 				}
 			});
 		}
@@ -536,51 +524,6 @@ class TitleState extends MusicBeatState
 		}
 	}
 
-	public function startVideo(name:String):Void
-	{
-	#if VIDEOS_ALLOWED
-	var foundFile:Bool = false;
-	var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
-	#if sys
-	if (FileSystem.exists(fileName))
-	{
-		foundFile = true;
-	}
-	#end
-
-	if (!foundFile)
-	{
-		fileName = Paths.video(name);
-		#if sys
-		if (FileSystem.exists(fileName))
-		{
-		#else
-		if (OpenFlAssets.exists(fileName))
-		{
-		#end
-			foundFile = true;
-		}
-		} if (foundFile)
-		{
-			var bg = new FlxSprite(-FlxG.width, -FlxG.height).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-			bg.scrollFactor.set();
-			add(bg);
-
-			FlxG.autoPause = false;
-			(new FlxVideo(fileName)).finishCallback = function()
-			{
-				canPressEnter = true;
-				startIntro();
-				
-				FlxG.autoPause = true;
-			}
-			return;
-		}
-		else
-		{
-			FlxG.log.warn('Couldnt find video file: ' + fileName);
-		}
-		#end
-	}
+	
 
 }
