@@ -11,9 +11,11 @@ class CreditsVideo extends FlxState
 	#if desktop
 	var oldFPS:Int = VideoHandler.MAX_FPS;
 	var video:VideoHandler;
-	var titleState = new TitleState();
+	
         #end
 		
+	var titleState = new TitleState();
+	
 	override public function create():Void
 	{
                 #if desktop 
