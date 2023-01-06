@@ -1,5 +1,5 @@
 package;
-#if desktop 
+
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.util.FlxColor;
@@ -8,13 +8,15 @@ using StringTools;
 
 class CreditsVideo extends FlxState
 {
+	#if desktop
 	var oldFPS:Int = VideoHandler.MAX_FPS;
 	var video:VideoHandler;
 	var titleState = new TitleState();
-
+        #end
+		
 	override public function create():Void
 	{
-
+                #if desktop 
 		super.create();
 
 		VideoHandler.MAX_FPS = 60;
@@ -34,6 +36,7 @@ class CreditsVideo extends FlxState
 		video.setPosition(0,0);
 
 		add(video);
+		#end
 	}
 
 	override public function update(elapsed:Float){
@@ -47,4 +50,4 @@ class CreditsVideo extends FlxState
 	}
 	
 }
-#end
+
